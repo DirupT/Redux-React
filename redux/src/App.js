@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import { connect } from 'react-redux';
 import { getUsers } from './actions';
+import Users from './components/Users';
 
 class App extends Component {
   componentDidMount() {
@@ -12,7 +13,16 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <img src={logo} className="App-logo" alt="logo" />
+      
+        {
+          this.props.fetching ?
+            <div>
+              <img src={logo} className="App-logo" alt="logo" />
+            </div>
+            :
+            <Users users={this.props.users} />
+        }
+
       </div>
     );
   }
@@ -21,7 +31,8 @@ class App extends Component {
 const mapStateToProps = state => {
   console.log(state);
   return {
-    users: state
+    users: state.users,
+    fetching: state.fethingUsers
   }
 }
 
