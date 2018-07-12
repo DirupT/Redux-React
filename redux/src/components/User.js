@@ -2,7 +2,10 @@ import React from 'react';
 
 const User = props => {
     return (
-        <div>User</div>
+        <div className='user-container'>
+            <p><strong>{props.user.title}</strong></p>
+            <p>{props.user.body}</p>
+        </div>
     );
 }
 
