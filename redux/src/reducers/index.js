@@ -21,8 +21,9 @@ export default (state = initialState, action) => {
             return Object.assign({}, state, { savingUser: true });
 
         case USER_SAVED:
-        console.log('test');
-            return Object.assign({}, state, { users: action.payload, savingUser: false, userSaved: true });
+            let users = state.users.slice();
+            users.push(action.payload);
+            return Object.assign({}, state, { users, savingUser: false, userSaved: true });
 
         case ERROR:
             return Object.assign({}, state, { error: action.payload });
